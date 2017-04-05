@@ -34,11 +34,13 @@ public class MainActivity extends AppCompatActivity {
             if(permissionChech != PackageManager.PERMISSION_GRANTED){
                 Log.i("MEnsaje", "No se tiene permiso para enviar SMS");
                 ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission.SEND_SMS },255 );
+                ActivityCompat.requestPermissions(this, new String[]{ Manifest.permission.ACCESS_FINE_LOCATION },99 );
             }else{
                 Log.i("MEnsaje", "SE tiene permiso para enviar SMS!");
             }
             return;
         }
+
         manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000L, 1.0F, receiver);
         clickButton();
     }
@@ -49,9 +51,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 SmsManager sms = SmsManager.getDefault();
-                String phoneNumber = "+5219711161681";
-//                String messageBody = "Solicito de la asistencia de la longotud: "+ longitud + " y en latitud "+latitud;
-                String messageBody = "Saca los tacos Jaime";
+                String phoneNumber = "+5219515574432";
+                String messageBody = "Solicito de la asistencia de la longotud: "+ longitud + " y en latitud "+latitud;
+//                String messageBody = "Saca los tacos Jaime";
                 try{
                     sms.sendTextMessage(phoneNumber, null, messageBody, null, null);
                 }catch (Exception e){
